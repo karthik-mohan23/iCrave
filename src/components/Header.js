@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import brandLogo from "../assets/brandLogo.webp";
-import { BsChevronDown, BsCartFill } from "react-icons/bs";
+import { BsChevronDown, BsCart4 } from "react-icons/bs";
 import { BiSolidOffer } from "react-icons/bi";
 import { TbPokeball } from "react-icons/tb";
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <header className="w-full shadow-md">
@@ -24,19 +24,41 @@ const Header = () => {
           </div>
         </div>
         <ul className="flex items-center gap-16">
-          <li>Home</li>
-          <li className="flex items-center gap-2">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "" : "text-gray-400")}>
+            Home
+          </NavLink>
+          <NavLink
+            to="/offers"
+            className={({ isActive }) => {
+              return (
+                "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+              );
+            }}>
             <BiSolidOffer size={25} />
             offers
-          </li>
-          <li className="flex items-center gap-2">
+          </NavLink>
+          <NavLink
+            to="/help"
+            className={({ isActive }) => {
+              return (
+                "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+              );
+            }}>
             <TbPokeball size={25} />
             Help
-          </li>
-          <li className="flex items-center gap-2">
-            <BsCartFill size={25} />
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) => {
+              return (
+                "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+              );
+            }}>
+            <BsCart4 size={25} />
             Cart
-          </li>
+          </NavLink>
         </ul>
       </nav>
     </header>
