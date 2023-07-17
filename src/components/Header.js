@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <header className="w-full shadow-md">
-      <nav className="w-[90%] max-w-7xl mx-auto py-3 flex items-center justify-between">
+      <nav className="w-[90%] max-w-7xl mx-auto py-2 flex items-center justify-between">
         <div className="flex gap-6">
           <div className="max-w-[3.5rem] cursor-pointer">
             <img src={brandLogo} className="w-full block" alt="logo" />
