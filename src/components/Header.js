@@ -8,10 +8,10 @@ const Header = () => {
     <header className="w-full shadow-md">
       <nav className="w-[90%] max-w-7xl mx-auto py-2 flex items-center justify-between">
         <div className="flex gap-6">
-          <div className="max-w-[3.5rem] cursor-pointer">
+          <div className="max-w-[3.5rem] ">
             <img src={brandLogo} className="w-full block" alt="logo" />
           </div>
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center gap-2 ">
             <h4 className="text-[0.85rem] font-semibold border-b-2 border-black hover:text-orange-500 hover:border-orange-500 duration-150">
               Edappaly
             </h4>
