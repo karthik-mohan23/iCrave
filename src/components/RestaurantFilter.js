@@ -1,8 +1,14 @@
 import { BsSearch } from "react-icons/bs";
-const RestaurantFilter = ({ handleActiveClass, activeFilterButton }) => {
+const RestaurantFilter = ({
+  handleActiveClass,
+  activeFilterButton,
+  allRestaurants,
+}) => {
   return (
-    <div className="flex items-center justify-between">
-      <h4 className="text-2xl font-semibold">5 restaurants</h4>
+    <div className="flex items-center justify-between pb-6">
+      <h4 className="text-2xl font-semibold">
+        {allRestaurants.length} restaurants
+      </h4>
       <div className="flex items-center border border-gray-400 rounded-full ">
         <input
           type="text"
