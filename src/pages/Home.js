@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Banner from "../components/Banner";
 import RestaurantFilter from "../components/RestaurantFilter";
 import { RESTAURANT_IMAGE } from "../utils/links";
+import { AiFillStar } from "react-icons/ai";
 
 const Home = () => {
   const [activeFilterButton, setActiveFilterButton] = useState(1);
@@ -40,22 +41,46 @@ const Home = () => {
             return (
               <div
                 key={restaurant.data.id}
-                className="outline-none hover:outline hover:outline-gray-200 hover:shadow-lg duration-300 w-[296px] px-5 py-5 cursor-pointer">
-                <div className="w-[254px]">
+                className="outline-none hover:outline hover:outline-gray-200 hover:shadow-xl duration-300 w-[296px] px-5 py-5 cursor-pointer">
+                <div className="w-[254px] relative">
                   <img
                     src={RESTAURANT_IMAGE + restaurant.data.cloudinaryImageId}
                     alt="restaurant"
-                    className="w-full block"
+                    className="w-full block mb-[0.875rem]"
                   />
+                  <p
+                    className={
+                      restaurant.data.promoted &&
+                      "absolute top-0 left-0 bg-[#3a3c41] text-white text-xs font-semibold px-2 py-1"
+                    }>
+                    {restaurant.data.promoted && "PROMOTED"}
+                  </p>
                 </div>
-                <p>{restaurant.data.name}</p>
-                <p>{restaurant.data.cuisines.join(", ")}</p>
+                <p className="text-[1rem] font-medium mb-1">
+                  {restaurant.data.name}
+                </p>
+                <p className="text-[#686b78] text-xs font-light mb-[0.875rem]">
+                  {restaurant.data.cuisines.join(", ")}
+                </p>
                 <div className="flex items-center justify-between">
-                  <p>{restaurant.data.avgRating}</p>
-                  <div>•</div>
-                  <p>{restaurant.data.deliveryTime}</p>
-                  <div>•</div>
-                  <p>{restaurant.data.costForTwoString}</p>
+                  <p
+                    className={`flex items-center gap-1 text-white  p-1 text-xs  
+                        ${
+                          restaurant.data.avgRating >= 4
+                            ? "bg-[#48c479]"
+                            : "bg-[#db7c38]"
+                        }
+                    `}>
+                    <AiFillStar /> {restaurant.data.avgRating}
+                  </p>
+                  <div className="text-[#535665] w-1">•</div>
+                  <p className="text-[#535665] text-xs">
+                    {restaurant.data.deliveryTime} MINS
+                  </p>
+                  <div className="text-[#535665] w-1">•</div>
+                  <p className="text-[#535665] text-xs">
+                    {restaurant.data.costForTwoString}
+                  </p>
                 </div>
               </div>
             );

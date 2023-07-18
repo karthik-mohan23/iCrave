@@ -15,7 +15,7 @@ const RestaurantFilter = ({
           placeholder="Restaurant name.."
           className=" rounded-full px-3 py-2 outline-none w-96 text-gray-600"
         />
-        <button className="px-3 py-2 border-l border-gray-400">
+        <button className="px-3 py-3 border-l border-gray-400">
           <BsSearch />
         </button>
       </div>
@@ -28,11 +28,16 @@ const RestaurantFilter = ({
         <button
           onClick={() => handleActiveClass(2)}
           className={activeFilterButton === 2 ? "border-b-2 border-black" : ""}>
-          Rating
+          Veg
         </button>
         <button
           onClick={() => handleActiveClass(3)}
           className={activeFilterButton === 3 ? "border-b-2 border-black" : ""}>
+          Rating
+        </button>
+        <button
+          onClick={() => handleActiveClass(4)}
+          className={activeFilterButton === 4 ? "border-b-2 border-black" : ""}>
           Delivery Time
         </button>
       </div>
