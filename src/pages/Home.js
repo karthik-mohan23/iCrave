@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
+import { RESTAURANT_CARD } from "../utils/links";
 import Banner from "../components/Banner";
 import RestaurantFilter from "../components/RestaurantFilter";
-
 import RestaurantCards from "../components/RestaurantCards";
+import ShimmerHome from "../components/ShimmerHome";
 
 const Home = () => {
-  const [activeFilterButton, setActiveFilterButton] = useState(1);
-
   const [allRestaurants, setAllRestaurants] = useState([]);
 
   useEffect(() => {
@@ -14,28 +13,23 @@ const Home = () => {
   }, []);
 
   const fetchRestaurants = async () => {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=10.0260688&lng=76.3124753&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
-    );
+    const response = await fetch(RESTAURANT_CARD);
     const restaurants = await response.json();
-    console.log(restaurants.data.cards[2].data.data.cards);
-    setAllRestaurants(restaurants.data.cards[2].data.data.cards);
+    console.log(restaurants?.data?.cards[2]?.data?.data?.cards);
+    setAllRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
   };
 
-  const handleActiveClass = (num) => {
-    setActiveFilterButton(num);
-  };
+  if (allRestaurants.length === 0) {
+    return <ShimmerHome />;
+  }
 
   return (
     <div>
       <Banner />
       <section className="w-[90%] max-w-7xl mx-auto py-10">
-        <RestaurantFilter
-          activeFilterButton={activeFilterButton}
-          handleActiveClass={handleActiveClass}
-          allRestaurants={allRestaurants}
-        />
+        <RestaurantFilter allRestaurants={allRestaurants} />
         <hr />
+
         <RestaurantCards allRestaurants={allRestaurants} />
       </section>
     </div>

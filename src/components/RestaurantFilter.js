@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-const RestaurantFilter = ({
-  handleActiveClass,
-  activeFilterButton,
-  allRestaurants,
-}) => {
+const RestaurantFilter = ({ allRestaurants }) => {
+  const [activeFilterButton, setActiveFilterButton] = useState(1);
+  const handleActiveClass = (num) => {
+    setActiveFilterButton(num);
+  };
   return (
     <div className="flex items-center justify-between pb-6">
       <h4 className="text-2xl font-semibold">
