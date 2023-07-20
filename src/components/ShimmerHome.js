@@ -14,10 +14,8 @@ const ShimmerHome = () => {
         {Array(15)
           .fill("")
           .map((e, index) => (
-            <div>
-              <div
-                key={index}
-                className="w-[296px] h-36 bg-gray-300 mb-2"></div>
+            <div key={index}>
+              <div className="w-[296px] h-36 bg-gray-300 mb-2"></div>
               <div className="w-2/3 h-5 bg-slate-300 mb-2"></div>
               <div className="w-1/3 h-3 bg-slate-300"></div>
             </div>

@@ -17,8 +17,9 @@ const RestaurantCards = ({ filteredRestaurants }) => {
               />
               <p
                 className={
-                  restaurant.data.promoted &&
-                  "absolute top-0 left-0 bg-[#3a3c41] text-white text-xs font-semibold px-2 py-1 shadow-2xl"
+                  restaurant.data.promoted
+                    ? "absolute top-0 left-0 bg-[#3a3c41] text-white text-xs font-semibold px-2 py-1 shadow-2xl"
+                    : ""
                 }>
                 {restaurant.data.promoted && "PROMOTED"}
               </p>

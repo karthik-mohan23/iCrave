@@ -8,6 +8,7 @@ import { BsSearch } from "react-icons/bs";
 const Home = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  // to set active state of button
   const [activeFilterButton, setActiveFilterButton] = useState(1);
 
   useEffect(() => {
@@ -27,9 +28,31 @@ const Home = () => {
   };
 
   // show shimmer
-  if (allRestaurants.length === 0) {
+  if (filteredRestaurants.length === 0) {
     return <ShimmerHome />;
   }
+
+  const handleFilterRelevant = (restaurants) => {
+    setFilteredRestaurants(allRestaurants);
+  };
+  const handleFilterVeg = (restaurants) => {
+    const filteredRestaurants = restaurants.filter(
+      (restaurant) => restaurant?.data?.veg
+    );
+    setFilteredRestaurants(filteredRestaurants);
+  };
+  const handleFilterDeliveryTime = (restaurants) => {
+    const filteredRestaurants = restaurants.filter(
+      (restaurant) => restaurant?.data?.deliveryTime <= 30
+    );
+    setFilteredRestaurants(filteredRestaurants);
+  };
+  const handleFilterRating = (restaurants) => {
+    const filteredRestaurants = restaurants.filter(
+      (restaurant) => restaurant?.data?.avgRating >= 4
+    );
+    setFilteredRestaurants(filteredRestaurants);
+  };
 
   return (
     <div>
@@ -51,28 +74,40 @@ const Home = () => {
           </div>
           <div className="flex items-center gap-10 text-gray-500">
             <button
-              onClick={() => handleActiveClass(1)}
+              onClick={() => {
+                handleFilterRelevant(allRestaurants);
+                handleActiveClass(1);
+              }}
               className={
                 activeFilterButton === 1 ? "border-b-2 border-black" : ""
               }>
               Relevant
             </button>
             <button
-              onClick={() => handleActiveClass(2)}
+              onClick={() => {
+                handleFilterVeg(allRestaurants);
+                handleActiveClass(2);
+              }}
               className={
                 activeFilterButton === 2 ? "border-b-2 border-black" : ""
               }>
               Veg
             </button>
             <button
-              onClick={() => handleActiveClass(3)}
+              onClick={() => {
+                handleFilterRating(allRestaurants);
+                handleActiveClass(3);
+              }}
               className={
                 activeFilterButton === 3 ? "border-b-2 border-black" : ""
               }>
               Rating
             </button>
             <button
-              onClick={() => handleActiveClass(4)}
+              onClick={() => {
+                handleFilterDeliveryTime(allRestaurants);
+                handleActiveClass(4);
+              }}
               className={
                 activeFilterButton === 4 ? "border-b-2 border-black" : ""
               }>
