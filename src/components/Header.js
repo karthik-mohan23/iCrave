@@ -2,14 +2,16 @@ import brandLogo from "../assets/brandLogo.webp";
 import { BsChevronDown, BsCart4 } from "react-icons/bs";
 import { BiSolidOffer } from "react-icons/bi";
 import { TbPokeball } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="w-full shadow-md">
       <nav className="w-[90%] max-w-7xl mx-auto py-2 flex items-center justify-between">
         <div className="flex gap-6">
           <div className="max-w-[3.5rem] ">
-            <img src={brandLogo} className="w-full block" alt="logo" />
+            <Link to="/">
+              <img src={brandLogo} className="w-full block" alt="logo" />
+            </Link>
           </div>
           <div className="flex items-center gap-2 ">
             <h4 className="text-[0.85rem] font-semibold border-b-2 border-black hover:text-orange-500 hover:border-orange-500 duration-150">

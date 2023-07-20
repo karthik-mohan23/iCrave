@@ -1,37 +1,37 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RESTAURANT_MENU } from "../utils/links";
+
 import ShimmerHome from "../components/ShimmerHome";
+import RestaurantMenuDetails from "../components/RestaurantMenuDetails";
+import useFetchRestaurantMenu from "../utils/hooks/useFetchRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [restaurantMenu, setRestaurantMenu] = useState([]);
-
   const { resId } = useParams();
-
+  const restaurantMenu = useFetchRestaurantMenu(resId);
   // console.log(resId);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const response = await fetch(RESTAURANT_MENU + resId);
-    const data = await response.json();
-    // console.log(data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards);
-    setRestaurantMenu(
-      data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards
-    );
-  };
-
-  if (restaurantMenu.length === 0) {
+  if (
+    restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards
+      .length === 0
+  ) {
     return <ShimmerHome />;
   }
 
+  const details = restaurantMenu?.data?.cards[0]?.card?.card?.info;
+  console.log(details);
+
+  // console.log(restaurantMenu);
   return (
     <div>
-      {restaurantMenu.slice(1, 6).map((item) => {
-        return <h1>{item?.card?.card?.title}</h1>;
-      })}
+      {restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards
+        .slice(1, 6)
+        .map((item) => {
+          return (
+            <div>
+              {/* <h1>{item?.card?.card?.title}</h1> */}
+              {/* <RestaurantMenuDetails details={item?.data?.cards[0]} /> */}
+            </div>
+          );
+        })}
     </div>
   );
 };

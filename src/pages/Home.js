@@ -5,6 +5,7 @@ import RestaurantCards from "../components/RestaurantCards";
 import ShimmerHome from "../components/ShimmerHome";
 import { BsSearch } from "react-icons/bs";
 import RestaurantNotFound from "../components/RestaurantNotFound";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -142,8 +143,14 @@ const Home = () => {
               </div>
             </div>
             <hr />
-
-            <RestaurantCards filteredRestaurants={filteredRestaurants} />
+            {filteredRestaurants.map((restaurant) => (
+              <Link to={"/restaurant/" + restaurant.data.id}>
+                <RestaurantCards
+                  key={restaurant.data.id}
+                  filteredRestaurants={filteredRestaurants}
+                />
+              </Link>
+            ))}
           </>
         ) : (
           <RestaurantNotFound inputValue={inputValue} />
