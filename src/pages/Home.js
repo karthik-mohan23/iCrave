@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import RestaurantCards from "../components/RestaurantCards";
 import ShimmerHome from "../components/ShimmerHome";
 import { BsSearch } from "react-icons/bs";
+import RestaurantNotFound from "../components/RestaurantNotFound";
 
 const Home = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -12,6 +13,8 @@ const Home = () => {
   const [activeFilterButton, setActiveFilterButton] = useState(1);
   // to read input value
   const [inputValue, setInputValue] = useState("");
+  // if there is not restaurant to display
+  const [isRestaurant, setIsRestaurant] = useState(true);
 
   useEffect(() => {
     fetchRestaurants();
@@ -20,7 +23,7 @@ const Home = () => {
   const fetchRestaurants = async () => {
     const response = await fetch(RESTAURANT_CARD);
     const restaurants = await response.json();
-    console.log(restaurants?.data?.cards[2]?.data?.data?.cards);
+    // console.log(restaurants?.data?.cards[2]?.data?.data?.cards);
     setAllRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
   };
@@ -38,30 +41,34 @@ const Home = () => {
     setFilteredRestaurants(allRestaurants);
   };
   const handleFilterVeg = (restaurants) => {
-    const filteredRestaurants = restaurants.filter(
+    const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.data?.veg
     );
-    setFilteredRestaurants(filteredRestaurants);
+    setFilteredRestaurants(newRestaurants);
   };
   const handleFilterDeliveryTime = (restaurants) => {
-    const filteredRestaurants = restaurants.filter(
+    const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.data?.deliveryTime <= 30
     );
-    setFilteredRestaurants(filteredRestaurants);
+    setFilteredRestaurants(newRestaurants);
   };
   const handleFilterRating = (restaurants) => {
-    const filteredRestaurants = restaurants.filter(
+    const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.data?.avgRating >= 4
     );
-    setFilteredRestaurants(filteredRestaurants);
+    setFilteredRestaurants(newRestaurants);
   };
   const handleSearchRestaurant = (e, restaurants, inputValue) => {
     e.preventDefault();
-    const filteredRestaurants = restaurants.filter((restaurant) =>
+    const newRestaurants = restaurants.filter((restaurant) =>
       restaurant?.data?.name?.toLowerCase().includes(inputValue)
     );
-
-    setFilteredRestaurants(filteredRestaurants);
+    if (newRestaurants.length === 0) {
+      setIsRestaurant(false);
+    } else {
+      setFilteredRestaurants(newRestaurants);
+      setIsRestaurant(true);
+    }
   };
 
   return (
@@ -132,8 +139,11 @@ const Home = () => {
           </div>
         </div>
         <hr />
-
-        <RestaurantCards filteredRestaurants={filteredRestaurants} />
+        {isRestaurant ? (
+          <RestaurantCards filteredRestaurants={filteredRestaurants} />
+        ) : (
+          <RestaurantNotFound inputValue={inputValue} />
+        )}
       </section>
     </div>
   );
