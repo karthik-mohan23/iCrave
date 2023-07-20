@@ -1,10 +1,10 @@
 import { RESTAURANT_IMAGE } from "../utils/links";
 import { AiFillStar } from "react-icons/ai";
 
-const RestaurantCards = ({ allRestaurants }) => {
+const RestaurantCards = ({ filteredRestaurants }) => {
   return (
     <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      {allRestaurants.map((restaurant) => {
+      {filteredRestaurants.map((restaurant) => {
         return (
           <div
             key={restaurant.data.id}

@@ -1,10 +1,4 @@
-import ShimmerHome from "../components/ShimmerHome";
 const Offers = () => {
-  return (
-    <div>
-      Offers
-      <ShimmerHome />
-    </div>
-  );
+  return <div>Offers</div>;
 };
 export default Offers;
