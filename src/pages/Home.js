@@ -10,6 +10,8 @@ const Home = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   // to set active state of button
   const [activeFilterButton, setActiveFilterButton] = useState(1);
+  // to read input value
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     fetchRestaurants();
@@ -32,7 +34,7 @@ const Home = () => {
     return <ShimmerHome />;
   }
 
-  const handleFilterRelevant = (restaurants) => {
+  const handleFilterRelevant = () => {
     setFilteredRestaurants(allRestaurants);
   };
   const handleFilterVeg = (restaurants) => {
@@ -53,6 +55,14 @@ const Home = () => {
     );
     setFilteredRestaurants(filteredRestaurants);
   };
+  const handleSearchRestaurant = (e, restaurants, inputValue) => {
+    e.preventDefault();
+    const filteredRestaurants = restaurants.filter((restaurant) =>
+      restaurant?.data?.name?.toLowerCase().includes(inputValue)
+    );
+
+    setFilteredRestaurants(filteredRestaurants);
+  };
 
   return (
     <div>
@@ -62,20 +72,26 @@ const Home = () => {
           <h4 className="text-2xl font-semibold">
             {filteredRestaurants.length} restaurants
           </h4>
-          <div className="flex items-center border border-gray-400 rounded-full ">
+          <form
+            onSubmit={(e) =>
+              handleSearchRestaurant(e, allRestaurants, inputValue)
+            }
+            className="flex items-center border border-gray-400 rounded-full ">
             <input
               type="text"
               placeholder="Restaurant name.."
               className=" rounded-full px-3 py-2 outline-none w-96 text-gray-600"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
             <button className="px-3 py-3 border-l border-gray-400">
               <BsSearch />
             </button>
-          </div>
+          </form>
           <div className="flex items-center gap-10 text-gray-500">
             <button
               onClick={() => {
-                handleFilterRelevant(allRestaurants);
+                handleFilterRelevant();
                 handleActiveClass(1);
               }}
               className={
