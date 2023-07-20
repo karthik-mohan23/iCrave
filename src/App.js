@@ -4,13 +4,16 @@ import Home from "./pages/Home";
 import Offers from "./pages/Offers";
 import Help from "./pages/Help";
 import Cart from "./pages/Cart";
+import RestaurantMenu from "./components/RestaurantMenu";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />}>
+            <Route path="restaurants/:id" element={<RestaurantMenu />} />
+          </Route>
           <Route path="/offers" element={<Offers />} />
           <Route path="/help" element={<Help />} />
           <Route path="/cart" element={<Cart />} />

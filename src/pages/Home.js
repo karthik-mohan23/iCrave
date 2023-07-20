@@ -13,7 +13,7 @@ const Home = () => {
   const [activeFilterButton, setActiveFilterButton] = useState(1);
   // to read input value
   const [inputValue, setInputValue] = useState("");
-  // if there is not restaurant to display
+  // if there is no restaurant to display
   const [isRestaurant, setIsRestaurant] = useState(true);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const Home = () => {
     setAllRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
   };
+
   // to set button active class
   const handleActiveClass = (num) => {
     setActiveFilterButton(num);
@@ -75,72 +76,75 @@ const Home = () => {
     <div>
       <Banner />
       <section className="w-[90%] max-w-7xl mx-auto py-10">
-        <div className="flex items-center justify-between pb-6">
-          <h4 className="text-2xl font-semibold">
-            {filteredRestaurants.length} restaurants
-          </h4>
-          <form
-            onSubmit={(e) =>
-              handleSearchRestaurant(e, allRestaurants, inputValue)
-            }
-            className="flex items-center border border-gray-400 rounded-full ">
-            <input
-              type="text"
-              placeholder="Restaurant name.."
-              className=" rounded-full px-3 py-2 outline-none w-96 text-gray-600"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <button className="px-3 py-3 border-l border-gray-400">
-              <BsSearch />
-            </button>
-          </form>
-          <div className="flex items-center gap-10 text-gray-500">
-            <button
-              onClick={() => {
-                handleFilterRelevant();
-                handleActiveClass(1);
-              }}
-              className={
-                activeFilterButton === 1 ? "border-b-2 border-black" : ""
-              }>
-              Relevant
-            </button>
-            <button
-              onClick={() => {
-                handleFilterVeg(allRestaurants);
-                handleActiveClass(2);
-              }}
-              className={
-                activeFilterButton === 2 ? "border-b-2 border-black" : ""
-              }>
-              Veg
-            </button>
-            <button
-              onClick={() => {
-                handleFilterRating(allRestaurants);
-                handleActiveClass(3);
-              }}
-              className={
-                activeFilterButton === 3 ? "border-b-2 border-black" : ""
-              }>
-              Rating
-            </button>
-            <button
-              onClick={() => {
-                handleFilterDeliveryTime(allRestaurants);
-                handleActiveClass(4);
-              }}
-              className={
-                activeFilterButton === 4 ? "border-b-2 border-black" : ""
-              }>
-              Delivery Time
-            </button>
-          </div>
-        </div>
-        <hr />
         {isRestaurant ? (
-          <RestaurantCards filteredRestaurants={filteredRestaurants} />
+          <>
+            <div className="flex items-center justify-between pb-6">
+              <h4 className="text-2xl font-semibold">
+                {filteredRestaurants.length} restaurants
+              </h4>
+              <form
+                onSubmit={(e) =>
+                  handleSearchRestaurant(e, allRestaurants, inputValue)
+                }
+                className="flex items-center border border-gray-400 rounded-full ">
+                <input
+                  type="text"
+                  placeholder="Restaurant name.."
+                  className=" rounded-full px-3 py-2 outline-none w-96 text-gray-600"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button className="px-3 py-3 border-l border-gray-400">
+                  <BsSearch />
+                </button>
+              </form>
+              <div className="flex items-center gap-10 text-gray-500">
+                <button
+                  onClick={() => {
+                    handleFilterRelevant();
+                    handleActiveClass(1);
+                  }}
+                  className={
+                    activeFilterButton === 1 ? "border-b-2 border-black" : ""
+                  }>
+                  Relevant
+                </button>
+                <button
+                  onClick={() => {
+                    handleFilterVeg(allRestaurants);
+                    handleActiveClass(2);
+                  }}
+                  className={
+                    activeFilterButton === 2 ? "border-b-2 border-black" : ""
+                  }>
+                  Veg
+                </button>
+                <button
+                  onClick={() => {
+                    handleFilterRating(allRestaurants);
+                    handleActiveClass(3);
+                  }}
+                  className={
+                    activeFilterButton === 3 ? "border-b-2 border-black" : ""
+                  }>
+                  Rating
+                </button>
+                <button
+                  onClick={() => {
+                    handleFilterDeliveryTime(allRestaurants);
+                    handleActiveClass(4);
+                  }}
+                  className={
+                    activeFilterButton === 4 ? "border-b-2 border-black" : ""
+                  }>
+                  Delivery Time
+                </button>
+              </div>
+            </div>
+            <hr />
+
+            <RestaurantCards filteredRestaurants={filteredRestaurants} />
+          </>
         ) : (
           <RestaurantNotFound inputValue={inputValue} />
         )}
