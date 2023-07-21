@@ -38,18 +38,3 @@ const RestaurantMenu = () => {
   );
 };
 export default RestaurantMenu;
-
-/* {restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards
-        .slice(1, 6)
-        .map((item) => {
-          return (
-            <div>
-              {/* <h1>{item?.card?.card?.title}</h1> */
-
-/* <RestaurantMenuDetails
-                details={item?.cards[0]?.card?.card?.info}
-              />
-            </div>
-          ); */
-
-/* // })} */

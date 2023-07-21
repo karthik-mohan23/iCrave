@@ -2,7 +2,6 @@ import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 const RestaurantMenuAccordion = ({ title, content }) => {
-  console.log(content);
   const display = Boolean(title && content);
   // to close and open accordion
   const [isActive, setIsActive] = useState(false);
