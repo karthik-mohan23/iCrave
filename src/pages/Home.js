@@ -24,7 +24,6 @@ const Home = () => {
   const fetchRestaurants = async () => {
     const response = await fetch(RESTAURANT_CARD);
     const restaurants = await response.json();
-    // console.log(restaurants?.data?.cards[2]?.data?.data?.cards);
     setAllRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
   };
@@ -72,7 +71,7 @@ const Home = () => {
       setIsRestaurant(true);
     }
   };
-
+  console.log(filteredRestaurants);
   return (
     <div>
       <Banner />
@@ -143,14 +142,16 @@ const Home = () => {
               </div>
             </div>
             <hr />
-            {filteredRestaurants.map((restaurant) => (
-              <Link to={"/restaurant/" + restaurant.data.id}>
-                <RestaurantCards
-                  key={restaurant.data.id}
-                  filteredRestaurants={filteredRestaurants}
-                />
-              </Link>
-            ))}
+            <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {filteredRestaurants.map((restaurant) => (
+                <Link to={"/restaurant/" + restaurant.data.id}>
+                  <RestaurantCards
+                    key={restaurant.data.id}
+                    restaurant={restaurant}
+                  />
+                </Link>
+              ))}
+            </div>
           </>
         ) : (
           <RestaurantNotFound inputValue={inputValue} />
