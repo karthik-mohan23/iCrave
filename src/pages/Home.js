@@ -62,7 +62,7 @@ const Home = () => {
   const handleSearchRestaurant = (e, restaurants, inputValue) => {
     e.preventDefault();
     const newRestaurants = restaurants.filter((restaurant) =>
-      restaurant?.data?.name?.toLowerCase().includes(inputValue)
+      restaurant?.data?.name?.toLowerCase().includes(inputValue.toLowerCase())
     );
     if (newRestaurants.length === 0) {
       setIsRestaurant(false);
@@ -71,7 +71,6 @@ const Home = () => {
       setIsRestaurant(true);
     }
   };
-  console.log(filteredRestaurants);
   return (
     <div>
       <Banner />
@@ -144,11 +143,10 @@ const Home = () => {
             <hr />
             <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {filteredRestaurants.map((restaurant) => (
-                <Link to={"/restaurant/" + restaurant.data.id}>
-                  <RestaurantCards
-                    key={restaurant.data.id}
-                    restaurant={restaurant}
-                  />
+                <Link
+                  to={"/restaurant/" + restaurant.data.id}
+                  key={restaurant.data.id}>
+                  <RestaurantCards restaurant={restaurant} />
                 </Link>
               ))}
             </div>

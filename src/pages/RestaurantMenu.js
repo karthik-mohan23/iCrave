@@ -3,30 +3,49 @@ import { useParams } from "react-router-dom";
 import ShimmerHome from "../components/ShimmerHome";
 import RestaurantMenuDetails from "../components/RestaurantMenuDetails";
 import useFetchRestaurantMenu from "../utils/hooks/useFetchRestaurantMenu";
+import RestaurantMenuAccordion from "../components/RestaurantMenuAccordion";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  console.log(resId);
-  const restaurantMenu = useFetchRestaurantMenu(resId);
-  // console.log(restaurantMenu);
-  // console.log(restaurantMenu?.cards[0]?.card?.card?.info);
-  const restaurantDetails = restaurantMenu?.cards[0]?.card?.card?.info;
-  // console.log(resId);
 
-  if (
-    restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards
-      .length === 0
-  ) {
+  const restaurantMenu = useFetchRestaurantMenu(resId);
+  if (!restaurantMenu) {
     return <ShimmerHome />;
   }
+  // restaurant details
+  const restaurantDetails = restaurantMenu?.cards[0]?.card?.card?.info;
 
-  // const details = restaurantMenu?.data?.cards[0]?.card?.card?.info;
-  // console.log(details);
+  // accordion array 1
+  const restaurantAccordionArray =
+    restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+  // const restaurantAccordionArray2 =
+  // restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  // console.log(restaurantAccordionArray2[2]?.card?.card?.categories);
+  // console.log(restaurantAccordionArray1[2]?.card?.card?.itemCards);
+  // console.log(restaurantAccordionArray1[1]?.card?.card?.title);
+  // console.log(restaurantAccordionArray[1]?.card?.card.categories);
+  // console.log(restaurantAccordionArray);
+  // console.log(restaurantAccordionArray1[1]?.card?.card?.categories);
 
-  // console.log(restaurantMenu);
+  // if (restaurantAccordionArray1?.length === 0) {
+  //   return <ShimmerHome />;
+  // }
+
   return (
     <div>
-      <RestaurantMenuDetails restaurantDetails={restaurantDetails} />
+      <div className="w-[90%] max-w-3xl mx-auto">
+        <RestaurantMenuDetails restaurantDetails={restaurantDetails} />
+        <div>
+          <hr />
+        </div>
+        {restaurantAccordionArray.map((item, index) => (
+          <RestaurantMenuAccordion
+            title={item?.card?.card?.title}
+            content={item?.card?.card?.itemCards}
+            key={index}
+          />
+        ))}
+      </div>
     </div>
   );
 };
