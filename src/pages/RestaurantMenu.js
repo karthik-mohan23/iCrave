@@ -18,24 +18,12 @@ const RestaurantMenu = () => {
   // accordion array 1
   const restaurantAccordionArray =
     restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
-  // const restaurantAccordionArray2 =
-  // restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  // console.log(restaurantAccordionArray2[2]?.card?.card?.categories);
-  // console.log(restaurantAccordionArray1[2]?.card?.card?.itemCards);
-  // console.log(restaurantAccordionArray1[1]?.card?.card?.title);
-  // console.log(restaurantAccordionArray[1]?.card?.card.categories);
-  // console.log(restaurantAccordionArray);
-  // console.log(restaurantAccordionArray1[1]?.card?.card?.categories);
-
-  // if (restaurantAccordionArray1?.length === 0) {
-  //   return <ShimmerHome />;
-  // }
 
   return (
     <div>
       <div className="w-[90%] max-w-3xl mx-auto">
         <RestaurantMenuDetails restaurantDetails={restaurantDetails} />
-        <div>
+        <div className="mb-8">
           <hr />
         </div>
         {restaurantAccordionArray.map((item, index) => (
