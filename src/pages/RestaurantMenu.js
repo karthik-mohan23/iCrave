@@ -15,9 +15,16 @@ const RestaurantMenu = () => {
   // restaurant details
   const restaurantDetails = restaurantMenu?.cards[0]?.card?.card?.info;
 
-  // accordion array 1
+  // restaurant menu details array
   const restaurantAccordionArray =
     restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+
+  // accordion details
+  const restaurantMenuItemsArray = restaurantAccordionArray.filter(
+    (details) =>
+      details?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
 
   return (
     <div>
@@ -26,7 +33,7 @@ const RestaurantMenu = () => {
         <div className="mb-8">
           <hr />
         </div>
-        {restaurantAccordionArray.map((item, index) => (
+        {restaurantMenuItemsArray.map((item, index) => (
           <RestaurantMenuAccordion
             title={item?.card?.card?.title}
             content={item?.card?.card?.itemCards}
