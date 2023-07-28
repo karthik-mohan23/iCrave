@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "black-gradient-t": "rgba(0, 0, 0, 0.01)",
+      },
+    },
   },
   plugins: [],
 };

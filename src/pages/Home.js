@@ -24,8 +24,12 @@ const Home = () => {
   const fetchRestaurants = async () => {
     const response = await fetch(RESTAURANT_CARD);
     const restaurants = await response.json();
-    setAllRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(restaurants?.data?.cards[2]?.data?.data?.cards);
+    const restaurantsArray =
+      restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    // console.log(restaurantsArray);
+    setAllRestaurants(restaurantsArray);
+    setFilteredRestaurants(restaurantsArray);
   };
 
   // to set button active class
@@ -34,7 +38,7 @@ const Home = () => {
   };
 
   // show shimmer
-  if (filteredRestaurants.length === 0) {
+  if (filteredRestaurants?.length === 0) {
     return <ShimmerHome />;
   }
 
@@ -64,7 +68,7 @@ const Home = () => {
     const newRestaurants = restaurants.filter((restaurant) =>
       restaurant?.data?.name?.toLowerCase().includes(inputValue.toLowerCase())
     );
-    if (newRestaurants.length === 0) {
+    if (newRestaurants?.length === 0) {
       setIsRestaurant(false);
     } else {
       setFilteredRestaurants(newRestaurants);
@@ -79,7 +83,7 @@ const Home = () => {
           <>
             <div className="flex items-center justify-between pb-6">
               <h4 className="text-2xl font-semibold">
-                {filteredRestaurants.length} restaurants
+                {filteredRestaurants?.length} restaurants
               </h4>
               <form
                 onSubmit={(e) =>
@@ -142,10 +146,10 @@ const Home = () => {
             </div>
             <hr />
             <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredRestaurants.map((restaurant) => (
+              {filteredRestaurants?.map((restaurant) => (
                 <Link
-                  to={"/restaurant/" + restaurant.data.id}
-                  key={restaurant.data.id}>
+                  to={"/restaurant/" + restaurant.info.id}
+                  key={restaurant.info.id}>
                   <RestaurantCards restaurant={restaurant} />
                 </Link>
               ))}
