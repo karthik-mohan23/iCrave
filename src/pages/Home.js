@@ -28,7 +28,6 @@ const Home = () => {
     const restaurantsArray =
       restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    console.log(restaurantsArray);
     setAllRestaurants(restaurantsArray);
     setFilteredRestaurants(restaurantsArray);
   };

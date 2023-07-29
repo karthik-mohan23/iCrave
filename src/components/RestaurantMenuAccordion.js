@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 const RestaurantMenuAccordion = ({ title, content }) => {
+  console.log(content);
   const [isActive, setIsActive] = useState(false);
   return (
     <>
@@ -29,10 +30,14 @@ const RestaurantMenuAccordion = ({ title, content }) => {
                 return (
                   <div key={item?.card?.info?.id} className="mb-12">
                     <div className="flex justify-between items-center mb-12">
-                      <div className="w-[40%] ">
+                      <div>
                         <p className="text-[1rem]  font-medium mb-2">
                           {item?.card?.info?.name}
                         </p>
+                        <p className="text-xs  font-light mb-2">
+                          {item?.card?.info?.description}
+                        </p>
+
                         <div>
                           {item?.card?.info?.finalPrice ? (
                             <p className="text-[0.875rem]">
