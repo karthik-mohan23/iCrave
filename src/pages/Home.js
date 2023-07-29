@@ -24,10 +24,11 @@ const Home = () => {
   const fetchRestaurants = async () => {
     const response = await fetch(RESTAURANT_CARD);
     const restaurants = await response.json();
+
     const restaurantsArray =
       restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    // console.log(restaurantsArray);
+    console.log(restaurantsArray);
     setAllRestaurants(restaurantsArray);
     setFilteredRestaurants(restaurantsArray);
   };
@@ -47,26 +48,26 @@ const Home = () => {
   };
   const handleFilterVeg = (restaurants) => {
     const newRestaurants = restaurants.filter(
-      (restaurant) => restaurant?.data?.veg
+      (restaurant) => restaurant?.info?.veg
     );
     setFilteredRestaurants(newRestaurants);
   };
   const handleFilterDeliveryTime = (restaurants) => {
     const newRestaurants = restaurants.filter(
-      (restaurant) => restaurant?.data?.deliveryTime <= 30
+      (restaurant) => restaurant?.info?.sla?.deliveryTime <= 30
     );
     setFilteredRestaurants(newRestaurants);
   };
   const handleFilterRating = (restaurants) => {
     const newRestaurants = restaurants.filter(
-      (restaurant) => restaurant?.data?.avgRating >= 4
+      (restaurant) => restaurant?.info?.avgRating >= 4
     );
     setFilteredRestaurants(newRestaurants);
   };
   const handleSearchRestaurant = (e, restaurants, inputValue) => {
     e.preventDefault();
     const newRestaurants = restaurants.filter((restaurant) =>
-      restaurant?.data?.name?.toLowerCase().includes(inputValue.toLowerCase())
+      restaurant?.info?.name?.toLowerCase().includes(inputValue.toLowerCase())
     );
     if (newRestaurants?.length === 0) {
       setIsRestaurant(false);
