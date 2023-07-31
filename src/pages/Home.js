@@ -6,6 +6,7 @@ import ShimmerHome from "../components/ShimmerHome";
 import { BsSearch } from "react-icons/bs";
 import RestaurantNotFound from "../components/RestaurantNotFound";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -159,6 +160,7 @@ const Home = () => {
           <RestaurantNotFound inputValue={inputValue} />
         )}
       </section>
+      <Footer />
     </div>
   );
 };

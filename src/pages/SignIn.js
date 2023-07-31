@@ -8,6 +8,8 @@ const SignIn = () => {
   const { updateUser } = useContext(AuthContext);
 
   useEffect(() => {
+    // state might not have been updated yet because setState is asynchronous
+    // To fix this issue, you can use the useEffect hook to handle the update
     // This useEffect will run whenever `holdUserName` changes
     // so we can call `updateUser` with the updated value.
     updateUser(holdUserName);
@@ -15,8 +17,9 @@ const SignIn = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!userName) return;
-
+    if (!userName || userName.length <= 3 || userName.length >= 15) {
+      alert("Enter a valid name");
+    }
     setHoldUserName(userName);
     setUserName("");
   }
@@ -30,6 +33,7 @@ const SignIn = () => {
           type="text"
           placeholder="Enter your name"
           autoComplete="off"
+          autoFocus
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           className="px-2 py-3 border border-gray-900 mb-5"

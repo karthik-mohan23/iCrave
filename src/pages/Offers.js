@@ -4,7 +4,6 @@ import AuthContext from "../context/AuthContext";
 const Offers = () => {
   const data = useContext(AuthContext);
   const { name } = data;
-  console.log(name);
 
   return (
     <div className="px-2 text-center mt-52">

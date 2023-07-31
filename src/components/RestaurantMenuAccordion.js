@@ -2,7 +2,6 @@ import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 const RestaurantMenuAccordion = ({ title, content }) => {
-  console.log(content);
   const [isActive, setIsActive] = useState(false);
   return (
     <>
@@ -28,13 +27,13 @@ const RestaurantMenuAccordion = ({ title, content }) => {
             <div className="p-4">
               {content.map((item) => {
                 return (
-                  <div key={item?.card?.info?.id} className="mb-12">
-                    <div className="flex justify-between items-center mb-12">
+                  <div key={item?.card?.info?.id} className="mb-12 px-4">
+                    <div className="flex justify-between items-center gap-16 mb-12">
                       <div>
                         <p className="text-[1rem]  font-medium mb-2">
                           {item?.card?.info?.name}
                         </p>
-                        <p className="text-xs w-3/4  font-light mb-2">
+                        <p className="text-xs   font-light mb-2">
                           {item?.card?.info?.description}
                         </p>
 
@@ -60,7 +59,7 @@ const RestaurantMenuAccordion = ({ title, content }) => {
                             item?.card?.info?.imageId
                           }
                           alt="menu item"
-                          className="w-full h-full rounded-lg"
+                          className="w-full h-full block object-cover rounded-lg"
                         />
                         <button className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
                           ADD
