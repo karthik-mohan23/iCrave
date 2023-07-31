@@ -25,7 +25,7 @@ const SignIn = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <form
         onSubmit={handleSubmit}
         className="w-[90%] max-w-md mx-auto mt-52 border border-black p-5 flex flex-col">
@@ -36,7 +36,7 @@ const SignIn = () => {
           autoFocus
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="px-2 py-3 border border-gray-900 mb-5"
+          className="px-2 py-3 border border-gray-900 mb-5 rounded-md"
         />
         <button
           type="submit"

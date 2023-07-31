@@ -8,6 +8,7 @@ import RestaurantMenu from "./pages/RestaurantMenu";
 import AuthContext from "./context/AuthContext";
 import { useState } from "react";
 import SignIn from "./pages/SignIn";
+import Footer from "./components/Footer";
 function App() {
   const [user, setUser] = useState("");
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthContext.Provider>
     </>
