@@ -6,7 +6,7 @@ const Offers = () => {
   const { name } = data;
 
   return (
-    <div className="px-2 text-center mt-52">
+    <div className="text-center mt-52 min-h-screen">
       {name ? (
         <div>
           <h1 className="text-4xl mb-4">

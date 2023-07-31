@@ -32,10 +32,6 @@ const Home = () => {
     setFilteredRestaurants(restaurantsArray);
   };
 
-  // to set button active class
-  const handleActiveClass = (num) => {
-    setActiveFilterButton(num);
-  };
 
   // show shimmer
   if (filteredRestaurants?.length === 0) {
@@ -44,23 +40,27 @@ const Home = () => {
 
   const handleFilterRelevant = () => {
     setFilteredRestaurants(allRestaurants);
+    setActiveFilterButton(1);
   };
   const handleFilterVeg = (restaurants) => {
     const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.info?.veg
     );
+    setActiveFilterButton(2);
     setFilteredRestaurants(newRestaurants);
   };
   const handleFilterDeliveryTime = (restaurants) => {
     const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.info?.sla?.deliveryTime <= 30
     );
+    setActiveFilterButton(4);
     setFilteredRestaurants(newRestaurants);
   };
   const handleFilterRating = (restaurants) => {
     const newRestaurants = restaurants.filter(
       (restaurant) => restaurant?.info?.avgRating >= 4
     );
+    setActiveFilterButton(3);
     setFilteredRestaurants(newRestaurants);
   };
   const handleSearchRestaurant = (e, restaurants, inputValue) => {
@@ -105,7 +105,6 @@ const Home = () => {
                 <button
                   onClick={() => {
                     handleFilterRelevant();
-                    handleActiveClass(1);
                   }}
                   className={
                     activeFilterButton === 1 ? "border-b-2 border-black" : ""
@@ -115,7 +114,6 @@ const Home = () => {
                 <button
                   onClick={() => {
                     handleFilterVeg(allRestaurants);
-                    handleActiveClass(2);
                   }}
                   className={
                     activeFilterButton === 2 ? "border-b-2 border-black" : ""
@@ -125,7 +123,6 @@ const Home = () => {
                 <button
                   onClick={() => {
                     handleFilterRating(allRestaurants);
-                    handleActiveClass(3);
                   }}
                   className={
                     activeFilterButton === 3 ? "border-b-2 border-black" : ""
@@ -135,7 +132,6 @@ const Home = () => {
                 <button
                   onClick={() => {
                     handleFilterDeliveryTime(allRestaurants);
-                    handleActiveClass(4);
                   }}
                   className={
                     activeFilterButton === 4 ? "border-b-2 border-black" : ""

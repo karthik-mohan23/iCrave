@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <div>
           <div className="flex items-center mb-1">
-            <h2 className="font-medium text-xl text-gray-200">Company</h2>
+            <h2 className="font-medium text-xl text-gray-300">Company</h2>
           </div>
           <p className="text-gray-400 mb-1">About</p>
           <p className="text-gray-400 mb-1">Careers</p>
@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
         <div>
           <div className="flex items-center mb-1">
-            <h2 className="font-medium text-xl text-gray-200">Legal</h2>
+            <h2 className="font-medium text-xl text-gray-300">Legal</h2>
           </div>
           <p className="text-gray-400 mb-1">Terms & Conditions</p>
           <p className="text-gray-400 mb-1">Cookie Policy</p>

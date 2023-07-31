@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
 
   return (
     <div>
-      <div className="w-[90%] max-w-3xl mx-auto">
+      <div className="w-[90%] max-w-3xl mx-auto min-h-screen">
         <RestaurantMenuDetails restaurantDetails={restaurantDetails} />
         <div className="mb-8">
           <hr />

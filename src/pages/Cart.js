@@ -1,4 +1,4 @@
 const Cart = () => {
-  return <div>Cart</div>;
+  return <div className="min-h-screen">Cart</div>;
 };
 export default Cart;
