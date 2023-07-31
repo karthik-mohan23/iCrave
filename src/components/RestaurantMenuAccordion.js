@@ -26,6 +26,7 @@ const RestaurantMenuAccordion = ({ title, content }) => {
           {isActive && (
             <div className="p-4">
               {content.map((item) => {
+                {console.log(item);}
                 return (
                   <div key={item?.card?.info?.id} className="mb-12 px-4">
                     <div className="flex justify-between items-center gap-16 mb-12">
