@@ -14,6 +14,7 @@ const Offers = () => {
             Hello <span className="font-semibold text-4xl">{name}</span>,
           </h1>
           <p>
+            Use{" "}
             <span className="font-medium text-xl text-red-400">NewUser50</span>{" "}
             to receive <span className="font-medium text-xl">50%</span> discount
             on your next order.
