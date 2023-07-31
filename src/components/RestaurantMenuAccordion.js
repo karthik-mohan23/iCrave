@@ -34,7 +34,7 @@ const RestaurantMenuAccordion = ({ title, content }) => {
                         <p className="text-[1rem]  font-medium mb-2">
                           {item?.card?.info?.name}
                         </p>
-                        <p className="text-xs  font-light mb-2">
+                        <p className="text-xs w-3/4  font-light mb-2">
                           {item?.card?.info?.description}
                         </p>
 
@@ -53,14 +53,14 @@ const RestaurantMenuAccordion = ({ title, content }) => {
                           )}
                         </div>
                       </div>
-                      <div className="w-[118px] h-24 relative">
+                      <div className="w-28 h-24 relative">
                         <img
                           src={
                             RESTAURANT_MENU_ITEM_IMAGE +
                             item?.card?.info?.imageId
                           }
                           alt="menu item"
-                          className="w-full h-full block object-cover rounded-lg"
+                          className="w-full h-full rounded-lg"
                         />
                         <button className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
                           ADD
