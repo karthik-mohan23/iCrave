@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { getCart, getTotalCartLength } from "../cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart, getTotalCartLength } from "../cart/cartSlice";
 import EmptyCart from "../components/EmptyCart";
 
 
@@ -8,7 +8,14 @@ const Cart = () => {
 const cartLength = useSelector(getTotalCartLength)
 
 const cart = useSelector(getCart)
-console.log(cart);
+
+const dispatch = useDispatch()
+
+function handleClearCart(){
+dispatch(clearCart())
+}
+
+
 if (!cartLength) return <EmptyCart/>
 
 return <div className="min-h-screen">
@@ -19,7 +26,7 @@ return <div className="min-h-screen">
     <h2 >Item name</h2>
       <p className="justify-self-center">Quantity</p>
       <p className="justify-self-center">Price</p>
-      <button className="justify-self-end bg-red-500 text-white px-3 py-1 rounded-full">CLEAR ALL</button>
+      <button onClick={handleClearCart} className="justify-self-end bg-red-500 text-white px-3 py-1 rounded-full">CLEAR ALL</button>
     </div>
 {
   cart.map(item => {
