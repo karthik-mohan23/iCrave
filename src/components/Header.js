@@ -7,10 +7,16 @@ import { FaUserCheck } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import { useSelector } from "react-redux";
+import { getTotalCartLength } from "../cart/cartSlice";
 
 const Header = () => {
   const userNameData = useContext(AuthContext);
   const { name } = userNameData;
+
+  // redux store
+  const cartLength = useSelector(getTotalCartLength)
+
 
   return (
     <header className="w-full shadow-md">
@@ -84,7 +90,7 @@ const Header = () => {
               );
             }}>
             <BsCart4 size={25} />
-            Cart
+           <span className="text-white text-xs font-semibold bg-green-400 py-1 px-2 rounded-full">{cartLength}</span> Cart
           </NavLink>
         </ul>
       </nav>

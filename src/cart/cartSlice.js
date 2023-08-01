@@ -8,10 +8,11 @@ const cartSlice = createSlice({
             {
                 id: 12,
                 name:"Biriyani",
-                price:10000 / 100,
+                unitPrice:10000 / 100,
                 quantity:2,
                 totalPrice: 200
             }
+           
         ]
     },
     reducers : {
@@ -45,3 +46,5 @@ const cartSlice = createSlice({
 export const {addItem,deleteItem,increaseItemQuantity,decreaseItemQuantity,clearCart}   = cartSlice.actions
 
 export default cartSlice.reducer
+
+export const getTotalCartLength = (state) => state.cart.cart.reduce((sum,item)=> sum + item.quantity ,0)
