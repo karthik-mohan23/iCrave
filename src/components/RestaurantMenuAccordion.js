@@ -1,8 +1,25 @@
 import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { addItem } from "../cart/cartSlice";
 const RestaurantMenuAccordion = ({ title, content }) => {
   const [isActive, setIsActive] = useState(false);
+ 
+const dispatch = useDispatch()
+
+
+ function handleAddToCart(id,itemName,itemPrice){
+const newItem =   {
+  id,
+  name: itemName,
+  unitPrice: itemPrice / 100,
+  quantity:1,
+  totalPrice: (itemPrice / 100) * 1,
+}
+dispatch(addItem(newItem))
+ }
+ 
   return (
     <>
       <div>
@@ -26,7 +43,6 @@ const RestaurantMenuAccordion = ({ title, content }) => {
           {isActive && (
             <div className="p-4">
               {content.map((item) => {
-                {console.log(item);}
                 return (
                   <div key={item?.card?.info?.id} className="mb-12 px-4">
                     <div className="flex justify-between items-center gap-16 mb-12">
@@ -65,7 +81,7 @@ const RestaurantMenuAccordion = ({ title, content }) => {
                           />
                         </div>
 
-                        <button className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
+                        <button onClick={()=>handleAddToCart(item?.card?.info?.id,item?.card?.info?.name,item?.card?.info?.finalPrice || item?.card?.info?.price)} className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
                           ADD
                         </button>
                       </div>

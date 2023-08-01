@@ -9,6 +9,8 @@ import AuthContext from "./context/AuthContext";
 import { useState } from "react";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 function App() {
   const [user, setUser] = useState("");
 
@@ -19,6 +21,7 @@ function App() {
 
   return (
     <>
+    <Provider store={store}>
       <AuthContext.Provider value={users}>
         <BrowserRouter>
           <Header />
@@ -33,6 +36,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </AuthContext.Provider>
+      </Provider>
     </>
   );
 }
