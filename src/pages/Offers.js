@@ -18,11 +18,15 @@ const Offers = () => {
             to receive <span className="font-medium text-xl">50%</span> discount
             on your next order.
           </p>
+          
         </div>
       ) : (
+        <div>
         <h2 className="text-4xl leading-normal">
           Sign in to see available offers
         </h2>
+        <button>button to Navigate to home if not signed in</button>
+        </div>
       )}
     </div>
   );

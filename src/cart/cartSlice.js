@@ -37,7 +37,7 @@ const cartSlice = createSlice({
             item.totalPrice = item.quantity + (item.price / 100)
         },
         clearCart(state,){
-            state.cart = []
+            state.cart.length = 0
         },
     }
 
@@ -47,4 +47,12 @@ export const {addItem,deleteItem,increaseItemQuantity,decreaseItemQuantity,clear
 
 export default cartSlice.reducer
 
+// to reuse
+
+export const getCart = (state) => state.cart.cart
+
+// to  show cart length
 export const getTotalCartLength = (state) => state.cart.cart.reduce((sum,item)=> sum + item.quantity ,0)
+
+// to show total price
+export const getTotalCartPrice = (state) => state.cart.cart.reduce((sum,item)=> sum + item.totalPrice ,0)
