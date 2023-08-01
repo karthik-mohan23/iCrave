@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Offers = () => {
   const data = useContext(AuthContext);
   const { name } = data;
+
+const navigate = useNavigate()
 
   return (
     <div className="text-center mt-52 min-h-screen">
@@ -22,10 +25,13 @@ const Offers = () => {
         </div>
       ) : (
         <div>
-        <h2 className="text-4xl leading-normal">
+        <h2 className="text-4xl leading-normal mb-3">
           Sign in to see available offers
         </h2>
-        <button>button to Navigate to home if not signed in</button>
+        <div>
+          <button onClick={()=> navigate("/signin")} className="bg-blue-400 text-white px-2 py-1 rounded-lg">Sign in</button>
+          </div>
+        
         </div>
       )}
     </div>
