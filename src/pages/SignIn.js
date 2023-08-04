@@ -19,7 +19,7 @@ const SignIn = () => {
     updateUser(userName);
 
     setUserName("");
-    navigate("/");
+    navigate("/offers");
   }
 
   return (

@@ -2,15 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offers from "./pages/Offers";
-import Help from "./pages/Help";
+import About from "./pages/About";
 import Cart from "./pages/Cart";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import AuthContext from "./context/AuthContext";
 import { useState } from "react";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer";
-import { Provider } from "react-redux";
-import store from "./utils/store";
+
 function App() {
   const [user, setUser] = useState("");
 
@@ -21,7 +20,6 @@ function App() {
 
   return (
     <>
-    <Provider store={store}>
       <AuthContext.Provider value={users}>
         <BrowserRouter>
           <Header />
@@ -29,14 +27,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/restaurant/:resId" element={<RestaurantMenu />} />
             <Route path="/offers" element={<Offers />} />
-            <Route path="/help" element={<Help />} />
+            <Route path="/about" element={<About />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
         </BrowserRouter>
       </AuthContext.Provider>
-      </Provider>
     </>
   );
 }

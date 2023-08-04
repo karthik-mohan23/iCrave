@@ -1,7 +1,6 @@
 import brandLogo from "../assets/brandLogo.webp";
 import { BsChevronDown, BsCart4 } from "react-icons/bs";
 import { BiSolidOffer } from "react-icons/bi";
-import { TbPokeball } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { FaUserCheck } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
@@ -56,14 +55,13 @@ const Header = () => {
             offers
           </NavLink>
           <NavLink
-            to="/help"
+            to="/about"
             className={({ isActive }) => {
               return (
                 "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <TbPokeball size={25} />
-            Help
+            About
           </NavLink>
           {name ? (
             <div className="flex items-center gap-2">

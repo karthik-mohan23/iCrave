@@ -29,7 +29,7 @@ const navigate = useNavigate()
           Sign in to see available offers
         </h2>
         <div>
-          <button onClick={()=> navigate("/signin")} className="bg-blue-400 text-white px-2 py-1 rounded-lg">Sign in</button>
+          <button onClick={()=> navigate("/signin")} className="bg-blue-400 text-white px-3 py-1 rounded-md text-xl">Sign in</button>
           </div>
         
         </div>

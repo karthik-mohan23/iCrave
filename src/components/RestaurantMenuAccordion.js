@@ -2,24 +2,28 @@ import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { addItem } from "../cart/cartSlice";
+import {
+  addItem,
+  decreaseItemQuantity,
+  increaseItemQuantity,
+} from "../cart/cartSlice";
 const RestaurantMenuAccordion = ({ title, content }) => {
   const [isActive, setIsActive] = useState(false);
- 
-const dispatch = useDispatch()
 
+  const dispatch = useDispatch();
 
- function handleAddToCart(id,itemName,itemPrice){
-const newItem =   {
-  id,
-  name: itemName,
-  unitPrice: itemPrice / 100,
-  quantity:1,
-  totalPrice: (itemPrice / 100) * 1,
-}
-dispatch(addItem(newItem))
- }
- 
+  function handleAddToCart(id, itemName, itemPrice) {
+    const newItem = {
+      id,
+      name: itemName,
+      unitPrice: itemPrice / 100,
+      quantity: 1,
+      totalPrice: itemPrice / 100, // Set initial totalPrice based on the unitPrice
+    };
+
+    dispatch(addItem(newItem));
+  }
+
   return (
     <>
       <div>
@@ -70,7 +74,7 @@ dispatch(addItem(newItem))
                         </div>
                       </div>
                       <div className="relative">
-                        <div className="w-28 h-24">
+                        <div className="w-28 h-24 mb-2">
                           <img
                             src={
                               RESTAURANT_MENU_ITEM_IMAGE +
@@ -81,7 +85,16 @@ dispatch(addItem(newItem))
                           />
                         </div>
 
-                        <button onClick={()=>handleAddToCart(item?.card?.info?.id,item?.card?.info?.name,item?.card?.info?.finalPrice || item?.card?.info?.price)} className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
+                        <button
+                          onClick={() =>
+                            handleAddToCart(
+                              item?.card?.info?.id,
+                              item?.card?.info?.name,
+                              item?.card?.info?.finalPrice ||
+                                item?.card?.info?.price
+                            )
+                          }
+                          className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
                           ADD
                         </button>
                       </div>

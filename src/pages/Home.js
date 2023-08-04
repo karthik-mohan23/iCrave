@@ -8,8 +8,8 @@ import RestaurantNotFound from "../components/RestaurantNotFound";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState(null);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(null);
   // to set active state of button
   const [activeFilterButton, setActiveFilterButton] = useState(1);
   // to read input value
@@ -22,20 +22,20 @@ const Home = () => {
   }, []);
 
   const fetchRestaurants = async () => {
-    const response = await fetch(RESTAURANT_CARD);
-    const restaurants = await response.json();
-    const restaurantsArray =
-      restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setAllRestaurants(restaurantsArray);
-    setFilteredRestaurants(restaurantsArray);
+    try {
+      const response = await fetch(RESTAURANT_CARD);
+      const restaurants = await response.json();
+
+      const restaurantsArray =
+        restaurants?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      setAllRestaurants(restaurantsArray);
+      setFilteredRestaurants(restaurantsArray);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-
-  // show shimmer
-  if (filteredRestaurants?.length === 0) {
-    return <ShimmerHome />;
-  }
 
   const handleFilterRelevant = () => {
     setFilteredRestaurants(allRestaurants);
@@ -74,6 +74,12 @@ const Home = () => {
       setIsRestaurant(true);
     }
   };
+
+  // show shimmer
+  if (!filteredRestaurants) {
+    return <ShimmerHome />;
+  }
+
   return (
     <div>
       <Banner />
