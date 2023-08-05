@@ -14,8 +14,7 @@ const Header = () => {
   const { name } = userNameData;
 
   // redux store
-  const cartLength = useSelector(getTotalCartLength)
-
+  const cartLength = useSelector(getTotalCartLength);
 
   return (
     <header className="w-full shadow-md">
@@ -87,8 +86,13 @@ const Header = () => {
                 "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <BsCart4 size={25} />
-           <span className="text-white text-xs font-semibold bg-green-400 py-1 px-2 rounded-full">{cartLength}</span> Cart
+            <div className="relative">
+              <BsCart4 size={25} />
+              <span className="absolute -top-3 left-3 text-white text-xs font-semibold bg-green-400 py-1 px-2 rounded-full">
+                {cartLength}
+              </span>
+            </div>
+            Cart
           </NavLink>
         </ul>
       </nav>

@@ -12,7 +12,6 @@ import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
   const cartLength = useSelector(getTotalCartLength);
-
   const cart = useSelector(getCart);
   const totalPrice = useSelector(getTotalCartPrice);
   const dispatch = useDispatch();
