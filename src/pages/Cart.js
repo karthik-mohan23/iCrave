@@ -80,27 +80,29 @@ const Cart = () => {
             <h3 className="mb-3">Bill Details</h3>
             <div className="flex justify-between items-center mb-2">
               <p>Total Amount</p>
-              <p>{totalPrice}</p>
+              <p>₹{totalPrice}</p>
             </div>
             <div className="flex justify-between items-center mb-2">
               <p>Delivery fee</p>
-              <p>$234</p>
+              <p>₹40</p>
             </div>
             <div className="flex justify-between items-center mb-2">
               <p>Platform fee</p>
-              <p>$234</p>
+              <p>₹2</p>
             </div>
             <div className="flex justify-between items-center mb-2">
               <p className="w-3/4">GST and Restaurant Charges</p>
-              <p>$234</p>
+              <p>₹108</p>
             </div>
           </div>
           <div className="h-[2px] bg-black"></div>
           <div className="flex justify-between items-center py-4">
             <h3>To Pay</h3>
-            <p>$234</p>
+            <p>₹{totalPrice + 40 + 2 + 108}</p>
           </div>
-          <button className="bg-black text-white py-1">Checkout</button>
+          <button className="bg-black text-white py-1">
+            Proceed To Checkout
+          </button>
         </div>
       </div>
     </div>
