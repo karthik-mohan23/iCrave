@@ -31,18 +31,19 @@ const cartSlice = createSlice({
       });
 
       item.quantity++;
-      console.log(item.quantity);
+
       item.totalPrice = item.unitPrice * item.quantity; // Update totalPrice based on new quantity
-      console.log(item.totalPrice);
     },
     decreaseItemQuantity(state, action) {
       // payload - id
-      console.log(action.payload);
-      const item = state.cart.find((item) => item.id === action.payload);
 
+      const item = state.cart.find((item) => item.id === action.payload);
+      if (item.quantity < 2) {
+        state.cart = state.cart.filter((item) => item.id !== action.payload);
+      }
       item.quantity--;
 
-      item.totalPrice = item.quantity * item.unitPrice;
+      item.totalPrice = item.unitPrice * item.quantity;
     },
     clearCart(state) {
       state.cart = [];

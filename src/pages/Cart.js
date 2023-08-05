@@ -14,6 +14,7 @@ const Cart = () => {
   const cartLength = useSelector(getTotalCartLength);
   const cart = useSelector(getCart);
   const totalPrice = useSelector(getTotalCartPrice);
+  const finalPriceToDisplay = Number(totalPrice.toFixed(2));
   const dispatch = useDispatch();
 
   function handleClearCart() {
@@ -46,21 +47,21 @@ const Cart = () => {
                   {item.quantity}
                 </p>
                 <p className="justify-self-center self-center">
-                  {item.totalPrice}
+                  {Number(item.totalPrice).toFixed(2)}
                 </p>
                 <div className="flex gap-4">
                   <button
                     onClick={() => {
                       dispatch(decreaseItemQuantity(item.id));
                     }}
-                    className="px-3 text-xl   bg-yellow-300 rounded-full">
+                    className="px-3 text-xl self-center  bg-yellow-300 rounded-full">
                     -
                   </button>
                   <button
                     onClick={() => {
                       dispatch(increaseItemQuantity(item.id));
                     }}
-                    className="px-3 text-xl   bg-yellow-300 rounded-full">
+                    className="px-3 text-xl self-center  bg-yellow-300 rounded-full">
                     +
                   </button>
                   <button
@@ -79,7 +80,7 @@ const Cart = () => {
             <h3 className="mb-3">Bill Details</h3>
             <div className="flex justify-between items-center mb-2">
               <p>Total Amount</p>
-              <p>₹{totalPrice}</p>
+              <p>₹{finalPriceToDisplay}</p>
             </div>
             <div className="flex justify-between items-center mb-2">
               <p>Delivery fee</p>
@@ -97,7 +98,7 @@ const Cart = () => {
           <div className="h-[2px] bg-black"></div>
           <div className="flex justify-between items-center py-4">
             <h3>To Pay</h3>
-            <p>₹{totalPrice + 40 + 2 + 108}</p>
+            <p>₹{finalPriceToDisplay + 150}</p>
           </div>
           <button className="bg-black text-white py-1">
             Proceed To Checkout

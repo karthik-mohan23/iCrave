@@ -3,7 +3,6 @@ import { RESTAURANT_IMAGE } from "../utils/links";
 import { AiFillStar } from "react-icons/ai";
 
 const RestaurantCards = ({ restaurant }) => {
-  console.log(restaurant);
   return (
     <div className="outline-none hover:outline hover:outline-gray-200 hover:shadow-xl duration-300 w-[296px] px-5 py-5 cursor-pointer">
       <div className="w-[254px] h-[169px]  relative mb-2">
