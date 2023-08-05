@@ -41,7 +41,7 @@ const Header = () => {
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "" : "text-gray-400")}>
-            Home
+            <span className="hover:text-orange-400">Home</span>
           </NavLink>
           <NavLink
             to="/offers"
@@ -51,7 +51,7 @@ const Header = () => {
               );
             }}>
             <BiSolidOffer size={25} />
-            offers
+            <span className="hover:text-orange-400">Offers</span>
           </NavLink>
           <NavLink
             to="/about"
@@ -60,7 +60,7 @@ const Header = () => {
                 "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            About
+            <span className="hover:text-orange-400">About</span>
           </NavLink>
           {name ? (
             <div className="flex items-center gap-2">
@@ -76,23 +76,23 @@ const Header = () => {
                 );
               }}>
               <CgProfile size={25} />
-              Sign in
+              <span className="hover:text-orange-400">Sign in</span>
             </NavLink>
           )}
           <NavLink
             to="/cart"
             className={({ isActive }) => {
               return (
-                "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+                "flex items-center gap-2  " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <div className="relative">
-              <BsCart4 size={25} />
-              <span className="absolute -top-3 left-3 text-white text-xs font-semibold bg-green-400 py-1 px-2 rounded-full">
+            <BsCart4 size={25} />
+            <div className="hover:text-orange-400">
+              <span className="text-white text-xs font-semibold bg-green-400 hover:bg-orange-400 py-1 px-2 rounded-md me-1">
                 {cartLength}
               </span>
+              Cart
             </div>
-            Cart
           </NavLink>
         </ul>
       </nav>
