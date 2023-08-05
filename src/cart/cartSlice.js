@@ -16,23 +16,24 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       // payload - object
-      let findIndex = state.cart.findIndex(
+      let findItemIndex = state.cart.findIndex(
         (item) => item.id === action.payload.id
       );
-      if (findIndex >= 0) {
-        state.cart[findIndex].quantity += 1;
+      if (findItemIndex >= 0) {
+        state.cart[findItemIndex].quantity += 1;
+        state.cart[findItemIndex].totalPrice =
+          state.cart[findItemIndex].unitPrice *
+          state.cart[findItemIndex].quantity;
       } else {
         state.cart.push(action.payload);
       }
     },
     deleteItem(state, action) {
       // payload - id
-
       state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
     increaseItemQuantity(state, action) {
       // payload - id
-
       const item = state.cart.find((item) => {
         return item.id === action.payload;
       });
@@ -48,9 +49,8 @@ const cartSlice = createSlice({
       const item = state.cart.find((item) => item.id === action.payload);
 
       item.quantity--;
-      console.log(item.quantity);
+
       item.totalPrice = item.quantity * item.unitPrice;
-      console.log(item.totalPrice);
     },
     clearCart(state) {
       state.cart = [];

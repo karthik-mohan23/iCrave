@@ -27,7 +27,7 @@ const Home = () => {
       const restaurants = await response.json();
 
       const restaurantsArray =
-        restaurants?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
       setAllRestaurants(restaurantsArray);

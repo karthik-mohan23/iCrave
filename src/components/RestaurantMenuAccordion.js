@@ -2,11 +2,7 @@ import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import {
-  addItem,
-  decreaseItemQuantity,
-  increaseItemQuantity,
-} from "../cart/cartSlice";
+import { addItem } from "../cart/cartSlice";
 const RestaurantMenuAccordion = ({ title, content }) => {
   const [isActive, setIsActive] = useState(false);
 
