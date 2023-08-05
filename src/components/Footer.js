@@ -10,8 +10,7 @@ const Footer = () => {
             <SiSwiggy size={40} />
             <h2 className="font-extrabold text-2xl">Swiggy</h2>
           </div>
-          <p className="ps-3">© 2023 BundI Technologies</p>
-          <p className="ps-3">Pvt. Ltd</p>
+          <p className="ps-3">Developed by Karthik Mohan.</p>
         </div>
         <div>
           <div className="flex items-center mb-1">
