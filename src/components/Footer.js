@@ -11,6 +11,7 @@ const Footer = () => {
             <h2 className="font-extrabold text-2xl">Swiggy</h2>
           </div>
           <p className="ps-3">Developed by Karthik Mohan.</p>
+          <p className="ps-3">© 2023 KM. All Rights Reserved.</p>
         </div>
         <div>
           <div className="flex items-center mb-1">

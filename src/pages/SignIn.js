@@ -1,4 +1,3 @@
-
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,7 @@ const SignIn = () => {
       alert("Enter a valid name");
       return;
     }
-    
+
     // Call updateUser with the current value of userName
     updateUser(userName);
 
@@ -24,10 +23,12 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen">
+      <h1 className="text-2xl text-center font-medium mt-32 mb-16">
+        Hungry? We've Got You Covered.
+      </h1>
       <form
         onSubmit={handleSubmit}
-        className="w-[90%] max-w-md mx-auto mt-52 border border-black p-5 flex flex-col rounded-md"
-      >
+        className="w-[90%] max-w-md mx-auto  border border-black px-5 py-10 flex flex-col rounded-md">
         <input
           type="text"
           placeholder="Enter your name"
@@ -41,9 +42,11 @@ const SignIn = () => {
           type="password"
           placeholder="password"
           autoComplete="off"
-          className="px-2 py-3 border border-gray-900 mb-5 rounded-md"
+          className="px-2 py-3 border border-gray-900 mb-10 rounded-md"
         />
-        <button type="submit" className="bg-blue-500 text-white py-3 rounded-md">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-3 rounded-md">
           Submit
         </button>
       </form>
