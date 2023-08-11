@@ -19,17 +19,17 @@ const Header = () => {
   return (
     <header className="w-full shadow-md">
       <nav className="w-[90%] max-w-7xl mx-auto py-2 flex items-center justify-between">
-        <div className="flex gap-6">
-          <div className="max-w-[3.5rem] ">
+        <div className="hidden md:flex gap-6">
+          <div className=" max-w-[3.5rem]  ">
             <Link to="/">
-              <img src={brandLogo} className="w-full block" alt="logo" />
+              <img src={brandLogo} className="w-full" alt="logo" />
             </Link>
           </div>
           <div className="flex items-center gap-2 ">
-            <h4 className="text-[0.85rem] font-semibold border-b-2 border-black hover:text-orange-500 hover:border-orange-500 duration-150">
+            <h4 className=" text-[0.85rem] font-semibold border-b-2 border-black hover:text-orange-500 hover:border-orange-500 duration-150">
               Edappaly
             </h4>
-            <div className="flex items-center">
+            <div className="hidden lg:flex items-center">
               <p className="text-gray-500 text-[0.8rem]">
                 Kochi, Kerala, India
               </p>
@@ -37,11 +37,13 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <ul className="flex items-center gap-16">
+        <ul className="mx-auto md:mx-0 flex items-center gap-6  lg:gap-16">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "" : "text-gray-400")}>
-            <span className="hover:text-orange-400">Home</span>
+            <span className="text-[0.825rem] md:text-[1rem] hover:text-orange-400">
+              Home
+            </span>
           </NavLink>
           <NavLink
             to="/offers"
@@ -50,8 +52,10 @@ const Header = () => {
                 "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <BiSolidOffer size={25} />
-            <span className="hover:text-orange-400">Offers</span>
+            <BiSolidOffer className="md:text-2xl" />
+            <span className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
+              Offers
+            </span>
           </NavLink>
           <NavLink
             to="/about"
@@ -60,11 +64,13 @@ const Header = () => {
                 "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <span className="hover:text-orange-400">About</span>
+            <span className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
+              About
+            </span>
           </NavLink>
           {name ? (
             <div className="flex items-center gap-2">
-              <FaUserCheck className="text-orange-400" size={20} />
+              <FaUserCheck className="text-orange-400 md:text-2xl" />
               {name}
             </div>
           ) : (
@@ -75,20 +81,23 @@ const Header = () => {
                   "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
                 );
               }}>
-              <CgProfile size={25} />
-              <span className="hover:text-orange-400">Sign in</span>
+              <CgProfile className="md:text-2xl" />
+              <span className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
+                Sign in
+              </span>
             </NavLink>
           )}
           <NavLink
             to="/cart"
             className={({ isActive }) => {
               return (
-                "flex items-center gap-2  " + (isActive ? "" : "text-gray-400")
+                "flex items-center gap-2 text-[0.825rem] md:text-[1rem] " +
+                (isActive ? "" : "text-gray-400")
               );
             }}>
-            <BsCart4 size={25} />
-            <div className="hover:text-orange-400">
-              <span className="text-white text-xs font-semibold bg-green-400 hover:bg-orange-400 py-1 px-2 rounded-md me-1">
+            <BsCart4 className="md:text-2xl" />
+            <div className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
+              <span className="text-white text-xs px-1 font-semibold bg-green-400 hover:bg-orange-400 md:py-1 md:px-2 rounded-md me-1">
                 {cartLength}
               </span>
               Cart
