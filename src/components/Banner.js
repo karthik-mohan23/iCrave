@@ -11,8 +11,8 @@ const Banner = () => {
   // navigate
   const navigate = useNavigate();
   return (
-    <div className="bg-[#171a29]">
-      <div className="py-9 flex">
+    <div className="bg-[#171a29] ">
+      <div className=" flex  py-9 w-[90%] max-w-7xl mx-auto  justify-between items-center gap-4">
         {bannerImage.map((image, index) => (
           <div
             onClick={() => navigate("/offers")}

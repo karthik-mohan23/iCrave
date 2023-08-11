@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 const About = () => {
   return (
-    <section className="min-h-screen bg-gray-100">
+    <section className=" bg-gray-100">
       <div className=" pt-14 max-w-4xl mx-auto ">
         <div className="w-[90%] mb-10 max-w-3xl mx-auto ">
           <img
