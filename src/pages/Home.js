@@ -86,15 +86,15 @@ const Home = () => {
       <section className="w-[90%] max-w-7xl mx-auto py-10">
         {isRestaurant ? (
           <>
-            <div className="flex items-center justify-between pb-6">
-              <h4 className="text-2xl font-semibold">
+            <div className="lg:flex justify-between items-center gap-4">
+              <h4 className="text-xl md:text-2xl font-semibold mb-3 lg:mb-0">
                 {filteredRestaurants?.length} restaurants
               </h4>
               <form
                 onSubmit={(e) =>
                   handleSearchRestaurant(e, allRestaurants, inputValue)
                 }
-                className="flex items-center border border-gray-400 rounded-full ">
+                className="flex items-center border border-gray-400 rounded-full mb-4 lg:mb-2 max-w-[430px]">
                 <input
                   type="text"
                   placeholder="Restaurant name.."
@@ -102,11 +102,12 @@ const Home = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button className="px-3 py-3 border-l border-gray-400">
+
+                <button className="border-l border-gray-400 w-9 px-3 py-3">
                   <BsSearch />
                 </button>
               </form>
-              <div className="flex items-center gap-10 text-gray-500">
+              <div className="w-full max-w-md flex justify-between  text-gray-500 mb-4 lg:mb-0">
                 <button
                   onClick={() => {
                     handleFilterRelevant();
@@ -146,7 +147,8 @@ const Home = () => {
               </div>
             </div>
             <hr />
-            <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {/* <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"> */}
+            <div className="mx-auto py-4 sm:grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
               {filteredRestaurants?.map((restaurant) => (
                 <Link
                   to={"/restaurant/" + restaurant.info.id}
