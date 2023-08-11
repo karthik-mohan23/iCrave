@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="py-7 bg-gray-900 text-white">
       <div className="w-[90%]  max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-        <div>
+        <div className="mb-5">
           <div className="flex items-center mb-3">
             <SiSwiggy size={40} />
             <h2 className="font-extrabold text-2xl">Swiggy</h2>
@@ -21,9 +21,9 @@ const Footer = () => {
           <p className="text-gray-400 mb-1">Careers</p>
           <p className="text-gray-400 mb-1">Team</p>
         </div>
-        <div>
+        <div className="mb-4 md:mb-1">
           <div className="flex items-center mb-1">
-            <h2 className="font-medium text-xl text-gray-300">Legal</h2>
+            <h2 className="font-medium text-xl text-gray-300 ">Legal</h2>
           </div>
           <p className="text-gray-400 mb-1">Terms & Conditions</p>
           <p className="text-gray-400 mb-1">Cookie Policy</p>
