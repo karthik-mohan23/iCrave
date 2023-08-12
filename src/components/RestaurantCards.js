@@ -11,7 +11,8 @@ const RestaurantCards = ({ restaurant }) => {
           alt="restaurant"
           className="w-full h-full object-cover block rounded-lg mb-[0.875rem]"
         />
-        {restaurant?.info?.aggregatedDiscountInfoV3 && (
+        {(restaurant?.info?.aggregatedDiscountInfoV3?.header ||
+          restaurant?.info?.aggregatedDiscountInfoV3?.subHeader) && (
           <>
             <div className="absolute bottom-0 left-0   bg-gradient-to-b from-black-gradient-t to-gray-950 rounded-b-lg h-2/5 w-full"></div>
             <p className="absolute bottom-1 left-0  font-extrabold text-white text-xl text-center w-full">

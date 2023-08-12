@@ -25,7 +25,6 @@ const Home = () => {
     try {
       const response = await fetch(RESTAURANT_CARD);
       const restaurants = await response.json();
-
       const restaurantsArray =
         restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
