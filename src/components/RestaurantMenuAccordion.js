@@ -1,11 +1,14 @@
-import { useState } from "react";
 import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice";
-const RestaurantMenuAccordion = ({ title, content }) => {
-  const [isActive, setIsActive] = useState(false);
-
+const RestaurantMenuAccordion = ({
+  title,
+  content,
+  id,
+  isOpen,
+  handleOpenAccordion,
+}) => {
   const dispatch = useDispatch();
 
   function handleAddToCart(id, itemName, itemPrice) {
@@ -14,7 +17,7 @@ const RestaurantMenuAccordion = ({ title, content }) => {
       name: itemName,
       unitPrice: itemPrice / 100,
       quantity: 1,
-      totalPrice: itemPrice / 100, // Set initial totalPrice based on the unitPrice
+      totalPrice: itemPrice / 100,
     };
 
     dispatch(addItem(newItem));
@@ -26,21 +29,23 @@ const RestaurantMenuAccordion = ({ title, content }) => {
         <div>
           <div
             className="flex justify-between items-center cursor-pointer"
-            onClick={() => setIsActive((prevValue) => !prevValue)}>
+            onClick={() => handleOpenAccordion(id)}>
             <div className="p-4">
               <h2 className="text-[1.2rem] font-semibold">
                 {title} ({content.length})
               </h2>
             </div>
             <div className="pe-4">
-              {isActive ? (
+              {/* {isActive ? ( */}
+              {isOpen ? (
                 <BiSolidDownArrow className="text-gray-500" />
               ) : (
                 <BiSolidUpArrow className="text-gray-500" />
               )}
             </div>
           </div>
-          {isActive && (
+
+          {isOpen && (
             <div className="p-4">
               {content.map((item) => {
                 return (
