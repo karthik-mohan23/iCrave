@@ -9,6 +9,7 @@ import RestaurantMenuAccordion from "../components/RestaurantMenuAccordion";
 const RestaurantMenu = () => {
   const [isActive, setIsActive] = useState(null);
   const handleOpenAccordion = (id) => {
+    // so that we can toggle opening and closing of accordion
     if (isActive !== id) {
       setIsActive(id);
     } else {

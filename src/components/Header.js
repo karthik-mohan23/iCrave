@@ -1,4 +1,4 @@
-import brandLogo from "../assets/brandLogo.webp";
+import brandLogo from "../assets/brandLogo.png";
 import { BsChevronDown, BsCart4 } from "react-icons/bs";
 import { BiSolidOffer } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";

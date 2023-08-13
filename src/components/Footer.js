@@ -1,4 +1,4 @@
-import { SiSwiggy } from "react-icons/si";
+import brandLogo from "../assets/brandLogo.png";
 import { BsApple } from "react-icons/bs";
 
 const Footer = () => {
@@ -6,9 +6,11 @@ const Footer = () => {
     <div className="py-7 bg-gray-900 text-white">
       <div className="w-[90%]  max-w-7xl mx-auto flex flex-wrap items-center justify-between">
         <div className="mb-5">
-          <div className="flex items-center mb-3">
-            <SiSwiggy size={40} />
-            <h2 className="font-extrabold text-2xl">Swiggy</h2>
+          <div className="flex items-center gap-3 mb-3">
+            <img src={brandLogo} alt="brand logo" className="w-12" />
+            <h2 className="font-semibold text-3xl">
+              <span className="text-2xl font-medium">i</span>Crave
+            </h2>
           </div>
           <p className="ps-3">Developed by Karthik Mohan.</p>
           <p className="ps-3">© 2023 KM. All Rights Reserved.</p>
