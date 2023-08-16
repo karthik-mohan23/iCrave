@@ -113,16 +113,16 @@ const Home = () => {
                 onSubmit={(e) =>
                   handleSearchRestaurant(e, allRestaurants, inputValue)
                 }
-                className="flex items-center border border-gray-400 rounded-full mb-4 lg:mb-2 max-w-[430px]">
+                className="flex items-center border border-gray-400 rounded-full mb-4 lg:mb-2 max-w-sm">
                 <input
                   type="text"
                   placeholder="Restaurant name.."
-                  className=" rounded-full px-3 py-2 outline-none w-96 text-gray-600"
+                  className=" rounded-full w-full ps-3 py-2 outline-none  text-gray-600"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
 
-                <button className="border-l border-gray-400 w-9 px-3 py-3">
+                <button className="border-l border-gray-400  px-2 ">
                   <BsSearch />
                 </button>
               </form>
