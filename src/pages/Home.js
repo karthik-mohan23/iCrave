@@ -24,13 +24,33 @@ const Home = () => {
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(RESTAURANT_CARD);
-      const restaurants = await response.json();
-      const restaurantsArray =
-        restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
+      const json = await response.json();
+      // const restaurants = await response.json();
+      // const restaurantsArray =
+      //   restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      //     ?.restaurants;
 
-      setAllRestaurants(restaurantsArray);
-      setFilteredRestaurants(restaurantsArray);
+      // setAllRestaurants(restaurantsArray);
+      // setFilteredRestaurants(restaurantsArray);
+      // initialize checkJsonData() function to check Swiggy Restaurant data
+      async function checkJsonData(jsonData) {
+        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+          // initialize checkData for Swiggy Restaurant data
+          let checkData =
+            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants;
+
+          // if checkData is not undefined then return it
+          if (checkData !== undefined) {
+            return checkData;
+          }
+        }
+      }
+
+      // call the checkJsonData() function which return Swiggy Restaurant data
+      const resData = await checkJsonData(json);
+      setAllRestaurants(resData);
+      setFilteredRestaurants(resData);
     } catch (error) {
       console.log(error);
     }
