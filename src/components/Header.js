@@ -49,10 +49,10 @@ const Header = () => {
             to="/offers"
             className={({ isActive }) => {
               return (
-                "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+                "flex items-center gap-1 " + (isActive ? "" : "text-gray-400")
               );
             }}>
-            <BiSolidOffer className="md:text-2xl" />
+            <BiSolidOffer className="hidden sm:block text-2xl" />
             <span className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
               Offers
             </span>
@@ -78,10 +78,10 @@ const Header = () => {
               to="/signin"
               className={({ isActive }) => {
                 return (
-                  "flex items-center gap-2 " + (isActive ? "" : "text-gray-400")
+                  "flex items-center gap-1 " + (isActive ? "" : "text-gray-400")
                 );
               }}>
-              <CgProfile className="md:text-2xl" />
+              <CgProfile className="hidden sm:block text-2xl" />
               <span className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
                 Sign in
               </span>
@@ -91,11 +91,11 @@ const Header = () => {
             to="/cart"
             className={({ isActive }) => {
               return (
-                "flex items-center gap-2 text-[0.825rem] md:text-[1rem] " +
+                "flex items-center  gap-2 text-[0.825rem] md:text-[1rem] " +
                 (isActive ? "" : "text-gray-400")
               );
             }}>
-            <BsCart4 className="md:text-2xl" />
+            <BsCart4 className="hidden sm:block text-2xl" />
             <div className="hover:text-orange-400 text-[0.825rem] md:text-[1rem]">
               <span className="text-white text-xs px-1 font-semibold bg-green-400 hover:bg-orange-400 md:py-1 md:px-2 rounded-md me-1">
                 {cartLength}
