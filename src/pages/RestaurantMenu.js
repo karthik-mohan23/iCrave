@@ -22,12 +22,14 @@ const RestaurantMenu = () => {
   if (!restaurantMenu) {
     return <ShimmerHome />;
   }
+
   // restaurant details
   const restaurantDetails = restaurantMenu?.cards[0]?.card?.card?.info;
 
   // restaurant menu details array
   const restaurantAccordionArray =
-    restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+    restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards ||
+    restaurantMenu?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards;
 
   // accordion details
   const restaurantMenuItemsArray = restaurantAccordionArray.filter(
