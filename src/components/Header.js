@@ -37,7 +37,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <ul className="mx-auto md:mx-0 flex items-center gap-4  lg:gap-16">
+        <ul className="mx-auto md:mx-0 flex items-center gap-4  lg:gap-12">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "" : "text-gray-400")}>

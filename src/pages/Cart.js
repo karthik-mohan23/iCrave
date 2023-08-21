@@ -32,12 +32,12 @@ const Cart = () => {
       <div className="w-[90%] max-w-7xl mx-auto flex justify-evenly flex-wrap-reverse lg:flex-nowrap py-10">
         <div>
           <div className="grid grid-cols-4 mb-10 max-w-3xl">
-            <h2>Item name</h2>
-            <p className="justify-self-center">Quantity</p>
-            <p className="justify-self-center">Price</p>
+            <h2 className="font-semibold">Item name</h2>
+            <p className="justify-self-center font-semibold">Quantity</p>
+            <p className="justify-self-center font-semibold">Price</p>
             <button
               onClick={handleClearCart}
-              className="justify-self-end bg-red-500 text-white px-3 py-1 rounded-full">
+              className="text-xs font-medium tracking-wider justify-self-end bg-red-500 text-white px-3 py-1 rounded-full">
               CLEAR ALL
             </button>
           </div>
@@ -68,7 +68,7 @@ const Cart = () => {
                   </button>
                   <button
                     onClick={() => handleDeleteItem(item.id)}
-                    className="text-xs justify-self-end self-center bg-yellow-300 px-4 py-2 rounded-full tracking-wide">
+                    className="hidden sm:inline-block text-xs justify-self-end self-center bg-yellow-300 px-4 py-2 rounded-full tracking-wide">
                     REMOVE
                   </button>
                 </div>

@@ -23,8 +23,11 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen">
-      <h1 className="text-2xl text-center font-medium mt-32 mb-16">
-        Hungry? We've Got You Covered.
+      <h1 className="text-2xl text-center font-medium mt-24 mb-4 ">
+        Savor the Moment:
+      </h1>
+      <h1 className="text-2xl text-center font-medium mb-16">
+        Sign in for Delightful Deliveries
       </h1>
       <form
         onSubmit={handleSubmit}

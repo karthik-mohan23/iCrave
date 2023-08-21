@@ -25,13 +25,7 @@ const Home = () => {
     try {
       const response = await fetch(RESTAURANT_CARD);
       const json = await response.json();
-      // const restaurants = await response.json();
-      // const restaurantsArray =
-      //   restaurants?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-      //     ?.restaurants;
-
-      // setAllRestaurants(restaurantsArray);
-      // setFilteredRestaurants(restaurantsArray);
+    
       // initialize checkJsonData() function to check Swiggy Restaurant data
       async function checkJsonData(jsonData) {
         for (let i = 0; i < jsonData?.data?.cards.length; i++) {
