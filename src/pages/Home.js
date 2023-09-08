@@ -25,7 +25,7 @@ const Home = () => {
     try {
       const response = await fetch(RESTAURANT_CARD);
       const json = await response.json();
-    
+
       // initialize checkJsonData() function to check Swiggy Restaurant data
       async function checkJsonData(jsonData) {
         for (let i = 0; i < jsonData?.data?.cards.length; i++) {
@@ -95,7 +95,9 @@ const Home = () => {
 
   return (
     <div>
-      <Banner />
+      <div className="pt-5">
+        <Banner />
+      </div>
       <section className="w-[90%] max-w-7xl mx-auto py-10">
         {isRestaurant ? (
           <>
