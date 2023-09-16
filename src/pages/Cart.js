@@ -9,6 +9,7 @@ import {
   increaseItemQuantity,
 } from "../cart/cartSlice";
 import EmptyCart from "../components/EmptyCart";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -109,7 +110,20 @@ const Cart = () => {
           </div>
           <button
             className="bg-gray-700 text-white py-2 hover:bg-black"
-            onClick={() => navigate("/order-complete")}>
+            onClick={() => {
+              handleClearCart();
+              toast.success("Order Successfull", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              navigate("/order-complete");
+            }}>
             Proceed To Checkout
           </button>
         </div>
