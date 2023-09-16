@@ -1,6 +1,7 @@
 import { AiFillStar } from "react-icons/ai";
 import { BiSolidTimeFive } from "react-icons/bi";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
+
 const RestaurantMenuDetails = ({ restaurantDetails }) => {
   return (
     <div>

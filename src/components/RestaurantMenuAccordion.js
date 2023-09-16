@@ -2,6 +2,7 @@ import { RESTAURANT_MENU_ITEM_IMAGE } from "../utils/links";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice";
+
 const RestaurantMenuAccordion = ({
   title,
   content,
@@ -87,14 +88,14 @@ const RestaurantMenuAccordion = ({
                         </div>
 
                         <button
-                          onClick={() =>
+                          onClick={() => {
                             handleAddToCart(
                               item?.card?.info?.id,
                               item?.card?.info?.name,
                               item?.card?.info?.finalPrice ||
                                 item?.card?.info?.price
-                            )
-                          }
+                            );
+                          }}
                           className="absolute -bottom-2 left-2 bg-white border border-green-400 rounded-md px-8 py-1 text-green-600 font-medium">
                           ADD
                         </button>

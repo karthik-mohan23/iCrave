@@ -9,6 +9,7 @@ import {
   increaseItemQuantity,
 } from "../cart/cartSlice";
 import EmptyCart from "../components/EmptyCart";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cartLength = useSelector(getTotalCartLength);
@@ -25,6 +26,8 @@ const Cart = () => {
   function handleDeleteItem(id) {
     dispatch(deleteItem(id));
   }
+
+  const navigate = useNavigate();
 
   if (!cartLength) return <EmptyCart />;
   return (
@@ -79,9 +82,9 @@ const Cart = () => {
 
         <div className="flex flex-col border border-black px-4 py-6 mb-10">
           <div>
-            <h3 className="mb-3">Bill Details</h3>
+            <h3 className="mb-3 ">Bill Details</h3>
             <div className="flex justify-between items-center mb-2">
-              <p>Total Amount</p>
+              <p>Bill Amount</p>
               <p>₹{finalPriceToDisplay}</p>
             </div>
             <div className="flex justify-between items-center mb-2">
@@ -98,11 +101,15 @@ const Cart = () => {
             </div>
           </div>
           <div className="h-[2px] bg-black"></div>
-          <div className="flex justify-between items-center py-4">
-            <h3>To Pay</h3>
-            <p>₹{finalPriceToDisplay + 150}</p>
+          <div className="flex justify-between items-center py-4 mb-1">
+            <h3 className="font-bold text-xl">To Pay</h3>
+            <p className="font-semibold text-xl">
+              ₹{finalPriceToDisplay + 150}
+            </p>
           </div>
-          <button className="bg-black text-white py-1">
+          <button
+            className="bg-gray-700 text-white py-2 hover:bg-black"
+            onClick={() => navigate("/order-complete")}>
             Proceed To Checkout
           </button>
         </div>

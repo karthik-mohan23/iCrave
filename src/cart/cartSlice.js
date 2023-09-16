@@ -1,4 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
+// const notify = () => {
+//   console.log("clicked");
+// toast.success("Item added to cart", {
+//   position: "top-center",
+//   autoClose: 3000,
+//   hideProgressBar: false,
+//   closeOnClick: true,
+//   pauseOnHover: true,
+//   draggable: true,
+//   progress: undefined,
+//   theme: "light",
+// });
+// };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -16,13 +31,46 @@ const cartSlice = createSlice({
         state.cart[findItemIndex].totalPrice =
           state.cart[findItemIndex].unitPrice *
           state.cart[findItemIndex].quantity;
+        // toast
+        toast.success("Item added to cart", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } else {
         state.cart.push(action.payload);
+        // toast
+        toast.success("Item added to cart", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     },
     deleteItem(state, action) {
       // payload - id
       state.cart = state.cart.filter((item) => item.id !== action.payload);
+      // toast
+      toast.error("Item removed", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     },
     increaseItemQuantity(state, action) {
       // payload - id
