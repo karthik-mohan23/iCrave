@@ -8,7 +8,7 @@ const OrderComplete = () => {
   return (
     <div className="min-h-[80vh] grid place-items-center w-[90%] max-w-4xl mx-auto ">
       <div>
-        <div className="border border-black rounded-lg p-8 mb-5">
+        <div className="border border-black rounded-lg p-8 mb-14 md:mb-5">
           {name ? (
             <h2 className="text-3xl ">
               Hooray ,<span className=" font-semibold">{name}</span> !! Your

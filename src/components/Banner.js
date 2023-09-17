@@ -11,7 +11,7 @@ const Banner = () => {
   // navigate
   const navigate = useNavigate();
   return (
-    <div className="py-8 bg-gray-900">
+    <div className="py-8 bg-gray-800">
       <div className="w-full h-full overflow-x-scroll overflow-y-hidden  whitespace-nowrap scroll-smooth lg:mx-auto lg:flex lg:justify-between lg:max-w-7xl xl:overflow-x-hidden ">
         {bannerImage.map((item) => (
           <img

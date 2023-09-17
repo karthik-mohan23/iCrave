@@ -49,6 +49,7 @@ const RestaurantMenuAccordion = ({
           {isOpen && (
             <div className="p-4">
               {content.map((item) => {
+                console.log(item?.card?.info);
                 return (
                   <div key={item?.card?.info?.id} className="mb-12 px-4">
                     <div className="flex justify-between items-center gap-16 mb-12">
@@ -70,7 +71,9 @@ const RestaurantMenuAccordion = ({
                             </p>
                           ) : (
                             <p className="text-[0.875rem]">
-                              ₹{item?.card?.info?.price / 100}
+                              ₹
+                              {item?.card?.info?.price / 100 ||
+                                item?.card?.info?.defaultPrice / 100}
                             </p>
                           )}
                         </div>
