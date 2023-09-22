@@ -11,13 +11,15 @@ const OrderComplete = () => {
         <div className="border border-black rounded-lg p-8 mb-14 md:mb-5">
           {name ? (
             <h2 className="text-3xl ">
-              Hooray ,<span className=" font-semibold">{name}</span> !! Your
-              order has been placed. Our delivery boy will reach you shortly.
+              Your order is in good hands,{" "}
+              <span className=" font-semibold">{name}</span>! Our delivery
+              partners are on their way to get your food to you quickly and
+              safely.
             </h2>
           ) : (
             <h2 className="text-3xl">
-              Hooray!! Your order has been placed. Our delivery boy will reach
-              you shortly.
+              Your order is in good hands. Our delivery partners are on their
+              way to get your food to you quickly and safely.
             </h2>
           )}
         </div>
