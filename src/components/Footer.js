@@ -1,5 +1,11 @@
 import brandLogo from "../assets/brandLogo.png";
 import { BsApple } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -13,7 +19,21 @@ const Footer = () => {
             </h2>
           </div>
           <p className="ps-3">Developed by Karthik Mohan.</p>
-          <p className="ps-3">© 2023 KM. All Rights Reserved.</p>
+          <p className="ps-3 mb-2">© 2023 KM. All Rights Reserved.</p>
+          <div className="ps-3 flex max-w-[100px]  justify-between items-center">
+            <Link>
+              <AiFillGithub size={25} className="hover:text-orange-600" />
+            </Link>
+            <Link>
+              <AiFillLinkedin size={25} className="hover:text-orange-600" />
+            </Link>
+            <Link>
+              <AiFillTwitterCircle
+                size={25}
+                className="hover:text-orange-600"
+              />
+            </Link>
+          </div>
         </div>
         <div>
           <div className="flex items-center mb-1">
