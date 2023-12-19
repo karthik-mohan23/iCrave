@@ -25,7 +25,9 @@ const Home = () => {
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(RESTAURANT_CARD);
+      console.log(response);
       const json = await response.json();
+      console.log(json);
 
       // initialize checkJsonData() function to check Swiggy Restaurant data
       async function checkJsonData(jsonData) {
